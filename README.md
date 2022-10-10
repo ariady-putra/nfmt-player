@@ -21,7 +21,7 @@
         ],
         "image": "ipfs://coverURL",
         "name": "Alt Name",
-        "copyright": "Copyright (r) year",
+        "copyright": "Copyright (c) year",
         ...
       }
     }
