@@ -61,10 +61,15 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
                       for(const [policyID, asset] of output.amount.multiasset.entries()) {
                         for(const [assetName, amount] of asset.entries()) {
                           if(amount === '1') {
-                            const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
-                            const asset = await specificAsset.json();
-                            if(asset.onchain_metadata && asset.onchain_metadata.song_title)
-                              musicLibrary.push(asset.onchain_metadata);
+                            try {
+                              const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
+                              const asset = await specificAsset.json();
+                              if(asset.onchain_metadata && asset.onchain_metadata.song_title)
+                                musicLibrary.push(asset.onchain_metadata);
+                            }
+                            catch { // skip unsupported NFTs
+                              continue; // eg. testnet NFTs
+                            }
                           }
                         }
                       }

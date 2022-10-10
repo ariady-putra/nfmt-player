@@ -1,6 +1,11 @@
 const { BlockFrostAPI } = require('@blockfrost/blockfrost-js');
 async function run(api, rsp) {
-  rsp.json(await api);
+  try {
+    rsp.json(await api);
+  }
+  catch(x) {
+    rsp.json(x);
+  }
 }
 
 var API;

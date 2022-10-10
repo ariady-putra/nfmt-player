@@ -43,7 +43,10 @@ function MusicPlaylist({library, disconnect}) {
             <br/>
             <sup>{song.copyright}</sup>
             <br/>
-            <audio autoPlay={true} controls={true}>
+            <audio autoPlay={true} controls={true} onEnded={() => {
+              setSong();
+              setTimeout(() => setSong(library[Math.floor(Math.random() * library.length)]), 1);
+            }}>
               <source
                 src={`https://gateway.pinata.cloud/ipfs/${song.files[0].src.replace('ipfs://', '')}`}
                 type={song.files[0].mediaType}/>
