@@ -1,0 +1,21 @@
+{
+  "name": "nfmt-player",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd frontend && npm i && cd ../backend && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ariady-putra/nfmt-player.git"
+  },
+  "author": "Ariady Putra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ariady-putra/nfmt-player/issues"
+  },
+  "homepage": "https://github.com/ariady-putra/nfmt-player#readme",
+  "engines": {
+    "node": "v14.20.0"
+  }
+}
