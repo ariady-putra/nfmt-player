@@ -64,7 +64,6 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
                             const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
                             const asset = await specificAsset.json();
                             if(asset.onchain_metadata && asset.onchain_metadata.song_title)
-                              // for(let i = 0; i < 10; i++)
                               musicLibrary.push(asset.onchain_metadata);
                           }
                         }
