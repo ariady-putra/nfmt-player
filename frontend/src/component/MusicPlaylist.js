@@ -9,7 +9,7 @@ function MusicPlaylist({library, disconnect}) {
         <td style={{width:'25%', height:'100%', padding:'0px 0px 0px 0px'}}>
           <table style={{width:'100%', height:'100%', borderSpacing:'0px', tableLayout:'fixed'}}><tbody>
             <tr style={{height:'100%'}}><td className='BoxShadow' style={{verticalAlign:'top', padding:'0px 0px 0px 0px'}}>
-              <div style={{maxHeight:document.documentElement.clientHeight/2, overflow:'auto'}}>
+              <div style={{height:'100%', overflow:'auto'}}>
                 {library.map(music => {
                   return <button key={music.name} onClick={() => {
                     setSong(); // force reset song each time
@@ -24,9 +24,7 @@ function MusicPlaylist({library, disconnect}) {
               </div>
             </td></tr>
             <tr><td className='BoxShadow' style={{verticalAlign:'middle', padding:'0px 0px 0px 0px'}}>
-              <div style={{maxHeight:document.documentElement.clientHeight/2, overflow:'auto'}}>
-                <button onClick={() => disconnect()}>Disconnect</button>
-              </div>
+              <button onClick={() => disconnect()}>Disconnect</button>
             </td></tr>
           </tbody></table>
         </td>
