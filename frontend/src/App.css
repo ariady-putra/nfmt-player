@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+  vertical-align: middle;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 2vmin);
+  text-shadow: 1px 2.5px rgb(213, 217, 217);
+  cursor: default;
+}
+
+.MusicPlaylist {
+  width: 100%;
+  height: 100%;
+}
+
+.SongTitle {
+  text-align: left;
+  font-weight: bold;
+}
+
+.SongArtists {
+  text-align: left;
+}
+
+.BoxShadow {
+  box-shadow: rgba(65, 65, 69, .4) 0px 2px 5px 0px;
+}
+
+.Status {
+  font-size: calc(4px + 1vmin);
+}
+
+.Error {
+  font-size: calc(4px + 1vmin);
+  text-align: left;
+  background-color: #ffdda9;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 7.5px;
+  box-shadow: rgba(65, 65, 69, .4) 0px 2px 5px 0px;
+}
+
+button {
+  color: rgb(37, 37, 32);
+  background-color: #a9ddff;
+  border-color: #9fd5ff;
+  box-shadow: rgba(65, 65, 69, .4) 0px 2px 5px 0px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  font-size: calc(7.5px + 1.5vmin);
+  width: 100%;
+}
+
+button:hover {
+  color: rgb(62, 62, 54);
+  background-color: #b9edff;
+  border-color: #afe5ff;
+  box-shadow: rgba(37, 37, 42, .2) 0px 2px 5px 0px;
+}
+
+button:active {
+  color: rgb(12, 12, 10);
+  background-color: #157bbf;
+  border-color: #006bbf;
+  box-shadow: rgba(93, 93, 96, .3) 0px 2px 5px 0px;
+}
