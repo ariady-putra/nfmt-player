@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "cd backend && npm start",
-    "build": "cd frontend && npm i && cd ../backend && npm i"
+    "build": "cd backend && npm run build"
   },
   "repository": {
     "type": "git",
