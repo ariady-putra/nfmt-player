@@ -1,4 +1,6 @@
 .App {
+  background-color: #282c34;
+  color: #ffcb52;
   text-align: center;
   vertical-align: middle;
   min-height: 100vh;
@@ -7,7 +9,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(8px + 2vmin);
-  text-shadow: 1px 2.5px rgb(213, 217, 217);
   cursor: default;
 }
 
@@ -26,7 +27,7 @@
 }
 
 .BoxShadow {
-  box-shadow: rgba(65, 65, 69, .4) 0px 2px 5px 0px;
+  box-shadow: #f1cc527f 0px 2px 5px 0px;
 }
 
 .Status {
@@ -36,18 +37,19 @@
 .Error {
   font-size: calc(4px + 1vmin);
   text-align: left;
-  background-color: #ffdda9;
+  color: #282c34;
+  background-color: #ffcc52;
+  box-shadow: #ffcc527f 0px 2px 5px 0px;
   padding-left: 10px;
   padding-right: 10px;
-  border-radius: 7.5px;
-  box-shadow: rgba(65, 65, 69, .4) 0px 2px 5px 0px;
 }
 
 button {
-  color: rgb(37, 37, 32);
-  background-color: #a9ddff;
-  border-color: #9fd5ff;
-  box-shadow: rgba(65, 65, 69, .4) 0px 2px 5px 0px;
+  color: #282c34;
+  background-color: #ffcc52;
+  border-color: #ffcc52;
+  box-shadow: #ffcc527f 0px 2px 5px 0px;
+  text-decoration: none;
   background-attachment: scroll;
   background-clip: border-box;
   background-image: none;
@@ -63,15 +65,11 @@ button {
 }
 
 button:hover {
-  color: rgb(62, 62, 54);
-  background-color: #b9edff;
-  border-color: #afe5ff;
-  box-shadow: rgba(37, 37, 42, .2) 0px 2px 5px 0px;
+  box-shadow: #ffcc52ff 0px 2px 5px 0px;
+  text-decoration: underline;
 }
 
 button:active {
-  color: rgb(12, 12, 10);
-  background-color: #157bbf;
-  border-color: #006bbf;
-  box-shadow: rgba(93, 93, 96, .3) 0px 2px 5px 0px;
+  box-shadow: #ffcc523f 0px 2px 5px 0px;
+  text-decoration: none;
 }
