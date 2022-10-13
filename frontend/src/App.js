@@ -22,21 +22,24 @@ function App() {
   
   return (
     <div className='App'>
-      {!wallet && <ConnectWallet
-        setWallet={setWallet}
-        setMusicLibrary={setMusicLibrary}
-        reportStatus={setStatus}
-        reportError={setError}/>
-      }
-      {status && <ShowStatus
-        status={status}/>
-      }
-      {error && <ShowError
-        error={error}/>
-      }
-      {musicLibrary && <MusicPlaylist
+      {musicLibrary ? <MusicPlaylist
         library={musicLibrary}
         disconnect={reset}/>
+        :
+        <div className='AppBg'>
+          {!wallet && <ConnectWallet
+            setWallet={setWallet}
+            setMusicLibrary={setMusicLibrary}
+            reportStatus={setStatus}
+            reportError={setError}/>
+          }
+          {status && <ShowStatus
+            status={status}/>
+          }
+          {error && <ShowError
+            error={error}/>
+          }
+        </div>
       }
     </div>
   );

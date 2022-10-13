@@ -29,71 +29,72 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
   return (
     <div className='ConnectWallet'>
       {!wallets.length ? 'You have no Cardano wallets installed :-(' :
-        <table align='center'><tbody>
-          <tr><td>Select wallet:</td></tr>
-          {wallets.map(key =>
-            <tr key={key}><td><button onClick={async () => {
-                try {
-                  tryCall(reportError, '');
-                  tryCall(reportStatus, `Connecting to ${window.cardano[key].name}...`);
-                  
-                  const wallet        = await window.cardano[key].enable();
-                  const networkID     = await wallet.getNetworkId();
-                  
-                  const hexAddress    = await wallet.getChangeAddress();
-                  const bech32Address = Address.from_hex(hexAddress).to_bech32();
-                  
-                  tryCall(setWallet, {
-                    api     : wallet,
-                    address : hexAddress,
-                    bech32  : bech32Address,
-                    network : networkID,
-                  });
-                  tryCall(reportStatus, 'Browsing music...');
-                  
-                  const utxoS = await wallet.getUtxos();
-                  let musicLibrary = [];
-                  
-                  for(const utxo of utxoS) {
-                    const output = TransactionUnspentOutput.from_hex(utxo).output().to_js_value();
-                    if(output.amount && output.amount.multiasset)
-                    {
-                      for(const [policyID, asset] of output.amount.multiasset.entries()) {
-                        for(const [assetName, amount] of asset.entries()) {
-                          if(amount === '1') {
-                            try {
-                              const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
-                              const asset = await specificAsset.json();
-                              if(asset.onchain_metadata && asset.onchain_metadata.song_title)
-                                musicLibrary.push(asset.onchain_metadata);
-                            }
-                            catch { // skip unsupported NFTs
-                              continue; // eg. testnet NFTs
+        <div>Select Wallet:
+          <table align='center'><tbody>
+            {wallets.map(key =>
+              <tr key={key}><td><button onClick={async () => {
+                  try {
+                    tryCall(reportError, '');
+                    tryCall(reportStatus, `Connecting to ${window.cardano[key].name}...`);
+                    
+                    const wallet        = await window.cardano[key].enable();
+                    const networkID     = await wallet.getNetworkId();
+                    
+                    const hexAddress    = await wallet.getChangeAddress();
+                    const bech32Address = Address.from_hex(hexAddress).to_bech32();
+                    
+                    tryCall(setWallet, {
+                      api     : wallet,
+                      address : hexAddress,
+                      bech32  : bech32Address,
+                      network : networkID,
+                    });
+                    tryCall(reportStatus, 'Browsing music library...');
+                    
+                    const utxoS = await wallet.getUtxos();
+                    let musicLibrary = [];
+                    
+                    for(const utxo of utxoS) {
+                      const output = TransactionUnspentOutput.from_hex(utxo).output().to_js_value();
+                      if(output.amount && output.amount.multiasset)
+                      {
+                        for(const [policyID, asset] of output.amount.multiasset.entries()) {
+                          for(const [assetName, amount] of asset.entries()) {
+                            if(amount === '1') {
+                              try {
+                                const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
+                                const asset = await specificAsset.json();
+                                if(asset.onchain_metadata && asset.onchain_metadata.song_title)
+                                  musicLibrary.push(asset.onchain_metadata);
+                              }
+                              catch { // skip unsupported NFTs
+                                continue; // eg. testnet NFTs
+                              }
                             }
                           }
                         }
                       }
                     }
+                    
+                    setMusicLibrary(musicLibrary.sort());
                   }
-                  
-                  setMusicLibrary(musicLibrary.sort());
-                }
-                catch(x) {
-                  tryCall(reportError, JSON.stringify(x, null, 4));
-                }
-                finally {
-                  tryCall(reportStatus, '');
-                }
-              }}
-              ><table><tbody><tr><td><img
-                src  ={window.cardano[key].icon}
-                width={32} height={32} alt={key}/>
-              </td><td>
-                {window.cardano[key].name}
-              </td></tr></tbody></table>
-            </button></td></tr>
-          )}
-        </tbody></table>
+                  catch(x) {
+                    tryCall(reportError, JSON.stringify(x, null, 4));
+                  }
+                  finally {
+                    tryCall(reportStatus, '');
+                  }
+                }}
+                ><table><tbody><tr><td><img
+                  src  ={window.cardano[key].icon}
+                  width={32} height={32} alt={key}/>
+                </td><td>
+                  {window.cardano[key].name}
+                </td></tr></tbody></table>
+              </button></td></tr>
+            )}
+          </tbody></table>
+        </div>
       }
     </div>
   );

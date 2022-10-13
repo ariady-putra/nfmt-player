@@ -3,7 +3,7 @@
   "name": "Non-fungible music token player",
   "icons": [
     {
-      "src": "Cardano-RGB_Logo-Icon-Blue.png",
+      "src": "Cardano-RGB_Logo-Icon-FFCB52.png",
       "sizes": "512x512 192x192 64x64 32x32 24x24 16x16",
       "type": "image/png"
     }

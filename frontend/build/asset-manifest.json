@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.a5d33032.css",
-    "main.js": "/static/js/main.c1d099bb.js",
+    "main.css": "/static/css/main.fe42ff43.css",
+    "main.js": "/static/js/main.d6340f88.js",
     "static/js/787.fd0acbae.chunk.js": "/static/js/787.fd0acbae.chunk.js",
+    "static/media/Cardano-RGB_Logo-Icon-FFCB52.svg": "/static/media/Cardano-RGB_Logo-Icon-FFCB52.2abca82c86d4ffbd3ace.svg",
     "index.html": "/index.html",
-    "main.a5d33032.css.map": "/static/css/main.a5d33032.css.map",
-    "main.c1d099bb.js.map": "/static/js/main.c1d099bb.js.map",
+    "main.fe42ff43.css.map": "/static/css/main.fe42ff43.css.map",
+    "main.d6340f88.js.map": "/static/js/main.d6340f88.js.map",
     "787.fd0acbae.chunk.js.map": "/static/js/787.fd0acbae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5d33032.css",
-    "static/js/main.c1d099bb.js"
+    "static/css/main.fe42ff43.css",
+    "static/js/main.d6340f88.js"
   ]
 }

@@ -12,9 +12,34 @@
   cursor: default;
 }
 
+.AppBg {
+  background-image: url('Cardano-RGB_Logo-Icon-FFCB52.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .MusicPlaylist {
   width: 100%;
   height: 100%;
+}
+
+.MusicPlaylistBg {
+  background-image: url('Cardano-RGB_Logo-Icon-FFCB52.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 .SongTitle {

@@ -29,28 +29,30 @@ function MusicPlaylist({library, disconnect}) {
           </tbody></table>
         </td>
         <td className='BoxShadow' style={{width:'75%', height:'100%', verticalAlign:'middle', padding:'0px 0px 0px 0px'}}>
-          {!library.length ? 'No music NFT was found from this wallet :-(' :
-          song && <div style={{maxHeight:window.innerHeight, overflow:'auto'}}>
-            <h1>{song.song_title}</h1>
-            <h2>{song.artists}</h2>
-            <img className='BoxShadow'
-              src={`https://gateway.pinata.cloud/ipfs/${song.image.replace('ipfs://', '')}`}
-              alt={song.name}
-              height={document.documentElement.clientHeight/2}
-            />
-            <br/>
-            <sup>{song.copyright}</sup>
-            <br/>
-            <audio autoPlay={true} controls={true} onEnded={() => {
-              setSong();
-              setTimeout(() => setSong(library[Math.floor(Math.random() * library.length)]), 1);
-            }}>
-              <source
-                src={`https://gateway.pinata.cloud/ipfs/${song.files[0].src.replace('ipfs://', '')}`}
-                type={song.files[0].mediaType}/>
-              {'Your browser does not support the audio element :-('}
-            </audio>
-          </div>}
+          <div className='MusicPlaylistBg'>
+            {!library.length ? 'No music NFT was found from this wallet :-(' :
+            song && <div style={{maxHeight:window.innerHeight, overflow:'auto'}}>
+              <h1>{song.song_title}</h1>
+              <h2>{song.artists}</h2>
+              <img className='BoxShadow'
+                src={`https://gateway.pinata.cloud/ipfs/${song.image.replace('ipfs://', '')}`}
+                alt={song.name}
+                height={document.documentElement.clientHeight/2}
+              />
+              <br/>
+              <sup>{song.copyright}</sup>
+              <br/>
+              <audio autoPlay={true} controls={true} onEnded={() => {
+                setSong();
+                setTimeout(() => setSong(library[Math.floor(Math.random() * library.length)]), 1);
+              }}>
+                <source
+                  src={`https://gateway.pinata.cloud/ipfs/${song.files[0].src.replace('ipfs://', '')}`}
+                  type={song.files[0].mediaType}/>
+                {'Your browser does not support the audio element :-('}
+              </audio>
+            </div>}
+          </div>
         </td>
       </tr></tbody></table>
     </div>
