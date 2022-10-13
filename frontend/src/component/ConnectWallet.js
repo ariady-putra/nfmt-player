@@ -21,8 +21,8 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
     try {
       call(status);
     }
-    catch(x) {
-      console.log(JSON.stringify(x));
+    catch {
+      console.log(status);
     }
   }
   
@@ -76,7 +76,7 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
                       }
                     }
                     
-                    setMusicLibrary(musicLibrary.sort());
+                    tryCall(setMusicLibrary, musicLibrary.sort());
                   }
                   catch(x) {
                     tryCall(reportError, JSON.stringify(x, null, 4));
