@@ -51,6 +51,15 @@
   text-align: left;
 }
 
+.SearchBox {
+  width: 100%;
+  font-size: calc(7.5px + 1.5vmin);
+  text-indent: 7.5px;
+  background-color: #f1cc52;
+  outline-width: 0;
+  border-left: 0;
+}
+
 .BoxShadow {
   box-shadow: #f1cc527f 0px 2px 5px 0px;
 }
