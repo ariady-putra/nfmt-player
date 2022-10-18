@@ -1,8 +1,4 @@
 import React from "react";
-import {
-  Address,
-  TransactionUnspentOutput,
-} from "@emurgo/cardano-serialization-lib-asmjs";
 
 function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) {
   const [wallets, setWallets] = React.useState(() => []);
@@ -37,16 +33,17 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
                     tryCall(reportError, '');
                     tryCall(reportStatus, `Connecting to ${window.cardano[key].name}...`);
                     
-                    const wallet        = await window.cardano[key].enable();
-                    const networkID     = await wallet.getNetworkId();
-                    
-                    const hexAddress    = await wallet.getChangeAddress();
-                    const bech32Address = Address.from_hex(hexAddress).to_bech32();
+                    const wallet      = await window.cardano[key].enable();
+                    const networkID   = await wallet.getNetworkId();
+                    const hexAddress  = await wallet.getChangeAddress();
+                    // let bech32Address;
+                    // import('@emurgo/cardano-serialization-lib-asmjs').then(({ Address }) =>
+                    //   bech32Address = Address.from_hex(hexAddress).to_bech32());
                     
                     tryCall(setWallet, {
                       api     : wallet,
                       address : hexAddress,
-                      bech32  : bech32Address,
+                      // bech32  : bech32Address,
                       network : networkID,
                     });
                     tryCall(reportStatus, 'Browsing music library...');
@@ -54,27 +51,29 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
                     const utxoS = await wallet.getUtxos();
                     let musicLibrary = [];
                     
-                    for(const utxo of utxoS) {
-                      const output = TransactionUnspentOutput.from_hex(utxo).output().to_js_value();
-                      if(output.amount && output.amount.multiasset)
-                      {
-                        for(const [policyID, asset] of output.amount.multiasset.entries()) {
-                          for(const [assetName, amount] of asset.entries()) {
-                            if(amount === '1') {
-                              try {
-                                const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
-                                const asset = await specificAsset.json();
-                                if(asset.onchain_metadata && asset.onchain_metadata.song_title)
-                                  musicLibrary.push(asset.onchain_metadata);
-                              }
-                              catch { // skip unsupported NFTs
-                                continue; // eg. testnet NFTs
+                    await import('@emurgo/cardano-serialization-lib-asmjs').then(async ({ TransactionUnspentOutput }) => {
+                      for(const utxo of utxoS) {
+                        const output = TransactionUnspentOutput.from_hex(utxo).output().to_js_value();
+                        if(output.amount && output.amount.multiasset)
+                        {
+                          for(const [policyID, asset] of output.amount.multiasset.entries()) {
+                            for(const [assetName, amount] of asset.entries()) {
+                              if(amount === '1') {
+                                try {
+                                  const specificAsset = await fetch(`/specificAsset?policy_id=${policyID}&asset_name=${assetName}`);
+                                  const asset = await specificAsset.json();
+                                  if(asset.onchain_metadata && asset.onchain_metadata.song_title)
+                                    musicLibrary.push(asset.onchain_metadata);
+                                }
+                                catch { // skip unsupported NFTs
+                                  continue; // eg. testnet NFTs
+                                }
                               }
                             }
                           }
                         }
                       }
-                    }
+                    });
                     
                     tryCall(setMusicLibrary, musicLibrary.sort());
                   }
