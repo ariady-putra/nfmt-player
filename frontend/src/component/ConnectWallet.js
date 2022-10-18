@@ -28,7 +28,7 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
   
   return (
     <div className='ConnectWallet'>
-      {!wallets.length ? 'You have no Cardano wallets installed :-(' :
+      {!wallets.length ? 'You have no Cardano wallet installed :-(' :
         <div>Select Wallet:
           <table align='center'><tbody>
             {wallets.map(key =>
