@@ -5,8 +5,7 @@ function MusicPlaylist({library, disconnect}) {
   const [search, setSearch] = React.useState(() => '');
   
   const filteredLib = library.filter(music => {
-    if(search == null || search.trim().length === 0)
-      return true;
+    if(!search) return true;
     
     const keyword = search.toUpperCase();
     

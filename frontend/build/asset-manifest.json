@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/static/css/main.addc54c6.css",
-    "main.js": "/static/js/main.3aed3527.js",
+    "main.js": "/static/js/main.71d53fee.js",
     "static/js/427.5883ce55.chunk.js": "/static/js/427.5883ce55.chunk.js",
     "static/js/787.fd0acbae.chunk.js": "/static/js/787.fd0acbae.chunk.js",
     "static/js/202.13ffc8bf.chunk.js": "/static/js/202.13ffc8bf.chunk.js",
     "static/media/Cardano-RGB_Logo-Icon-FFCB52.svg": "/static/media/Cardano-RGB_Logo-Icon-FFCB52.2abca82c86d4ffbd3ace.svg",
     "index.html": "/index.html",
     "main.addc54c6.css.map": "/static/css/main.addc54c6.css.map",
-    "main.3aed3527.js.map": "/static/js/main.3aed3527.js.map",
+    "main.71d53fee.js.map": "/static/js/main.71d53fee.js.map",
     "427.5883ce55.chunk.js.map": "/static/js/427.5883ce55.chunk.js.map",
     "787.fd0acbae.chunk.js.map": "/static/js/787.fd0acbae.chunk.js.map",
     "202.13ffc8bf.chunk.js.map": "/static/js/202.13ffc8bf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.addc54c6.css",
-    "static/js/main.3aed3527.js"
+    "static/js/main.71d53fee.js"
   ]
 }
