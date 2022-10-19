@@ -1,6 +1,6 @@
 # nfmt-player
 - Non-fungible music token player
-- A working demo is located at https://nfmt-player.herokuapp.com and https://nfmt-player.azurewebsites.net
+- A working demo is located at https://nfmt-player.azurewebsites.net
 - A recorded demo is located at https://youtu.be/lz58KuQK9hI
 <img src="screenshots/0_HomePage0.png"/>
 
