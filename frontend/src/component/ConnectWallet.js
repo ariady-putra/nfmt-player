@@ -6,8 +6,7 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
   React.useEffect(() => {
     if(!window.cardano) return;
     
-    const { TransactionUnspentOutput } = // pre-load chunk
-      import('@emurgo/cardano-serialization-lib-asmjs');
+    import('@emurgo/cardano-serialization-lib-asmjs'); // pre-load chunk
     
     const wallets = [];
     for(const key in window.cardano) {
@@ -42,7 +41,7 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
                     const networkID   = await wallet.getNetworkId();
                     const hexAddress  = await wallet.getChangeAddress();
                     // let bech32Address;
-                    // import('@emurgo/cardano-serialization-lib-asmjs').then(({ Address }) =>
+                    // await import('@emurgo/cardano-serialization-lib-asmjs').then(({ Address }) =>
                     //   bech32Address = Address.from_hex(hexAddress).to_bech32());
                     
                     tryCall(setWallet, {
