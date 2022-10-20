@@ -6,7 +6,8 @@ function ConnectWallet({setWallet, setMusicLibrary, reportStatus, reportError}) 
   React.useEffect(() => {
     if(!window.cardano) return;
     
-    import('@emurgo/cardano-serialization-lib-asmjs'); // pre-load chunk
+    const { TransactionUnspentOutput } = // pre-load chunk
+      import('@emurgo/cardano-serialization-lib-asmjs');
     
     const wallets = [];
     for(const key in window.cardano) {
